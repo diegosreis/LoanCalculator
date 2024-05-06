@@ -1,0 +1,12 @@
+@LoanCalculator.API_HostAddress = http://localhost:5215
+
+POST {{LoanCalculator.API_HostAddress}}/calculate-loan/
+Content-Type: application/json
+
+{
+  "amount": 50000,
+  "paybackTimeInYears": 2,
+  "type": "House"
+}
+
+###
