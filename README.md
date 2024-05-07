@@ -15,6 +15,10 @@ Ensure you have the following installed on your system:
 - .NET 6 SDK or later
 - Visual Studio 2022 or any other compatible IDE that supports .NET development
 
+### API Docs
+
+`http://localhost:5000/swagger/index.html`
+
 ### Installation
 
 Clone the repository to your local machine:
@@ -22,3 +26,7 @@ Clone the repository to your local machine:
 ```bash
 git clone https://github.com/diegosreis/LoanCalculator
 cd LoanCalculator
+cd loancalculator.web
+npm run build
+cd ..
+docker-compose up -d

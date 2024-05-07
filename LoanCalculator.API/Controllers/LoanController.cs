@@ -20,6 +20,11 @@ public class LoanController : ControllerBase
     [HttpGet("calculate-loan")]
     public ActionResult<PaymentPlanResult> CalculateLoan([FromQuery] LoanRequest loanRequest)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var paymentPlanResult = _loanApplicationService.ProcessLoanApplication(loanRequest);
         return Ok(paymentPlanResult);
     }
@@ -27,9 +32,13 @@ public class LoanController : ControllerBase
     [HttpGet("CalculateLoanXml")]
     public ActionResult CalculateLoanXml([FromQuery] LoanRequest loanRequest)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var paymentPlanResult = _loanApplicationService.ProcessLoanApplication(loanRequest);
 
-        // Serialize to XML
         var xmlSerializer = new XmlSerializer(typeof(PaymentPlanResult));
         using var stringWriter = new StringWriter();
         xmlSerializer.Serialize(stringWriter, paymentPlanResult);

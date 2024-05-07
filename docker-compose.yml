@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  loan-calculator-web:
+    container_name: loan-calculator-web
+    build:
+      context: .
+      dockerfile: loancalculator.web/Dockerfile
+    ports:
+      - "3000:80" # Map port 3000 on the host to port 80 in the container
+    depends_on:
+      - loan-calculator-api
+    networks:
+      - loan-calculator-network
+
+  loan-calculator-api:
+    container_name: loan-calculator-api
+    build:
+      context: .
+      dockerfile: LoanCalculator.API/Dockerfile
+    ports:
+      - "5000:8080" # Map port 5000 on the host to port 8080 in the container
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTPS_PORT=5001
+    networks:
+      - loan-calculator-network
+
+networks:
+  loan-calculator-network:
+    driver: bridge

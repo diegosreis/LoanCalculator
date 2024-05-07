@@ -1,0 +1,39 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    height: 100%;
+}
+
+.loan-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.loan-form-group {
+    margin-bottom: 1rem;
+}
+
+    .loan-form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .loan-form-group input,
+    .loan-form-group select {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .loan-form-group button {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }

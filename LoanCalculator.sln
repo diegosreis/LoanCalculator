@@ -15,10 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3273B439
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D87F1400-A642-48FD-802F-C6F8ACEDFAE7}"
 	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanCalculator.Domain.Tests", "LoanCalculator.Domain.Tests\LoanCalculator.Domain.Tests.csproj", "{E6D6F626-874B-47A5-9AE5-F5C2461818BC}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "loancalculator.web", "LoanCalculator.Web\loancalculator.web.esproj", "{DB862E30-003F-4F5E-BA70-D225A3B44636}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +45,12 @@ Global
 		{E6D6F626-874B-47A5-9AE5-F5C2461818BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6D6F626-874B-47A5-9AE5-F5C2461818BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6D6F626-874B-47A5-9AE5-F5C2461818BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB862E30-003F-4F5E-BA70-D225A3B44636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB862E30-003F-4F5E-BA70-D225A3B44636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB862E30-003F-4F5E-BA70-D225A3B44636}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DB862E30-003F-4F5E-BA70-D225A3B44636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB862E30-003F-4F5E-BA70-D225A3B44636}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB862E30-003F-4F5E-BA70-D225A3B44636}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +60,7 @@ Global
 		{E977FC21-7F93-4BCA-873F-D1D44A0FFC78} = {74085D5D-EDE7-411D-A1BF-DF0252423334}
 		{942D97E3-8870-4E35-A8A4-0FC3B5C7EAB8} = {74085D5D-EDE7-411D-A1BF-DF0252423334}
 		{E6D6F626-874B-47A5-9AE5-F5C2461818BC} = {3273B439-8358-40EB-914F-A6F8EBA3B16D}
+		{DB862E30-003F-4F5E-BA70-D225A3B44636} = {74085D5D-EDE7-411D-A1BF-DF0252423334}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A3FD947-94AA-4641-8C0C-19EAE3EBBAF3}
