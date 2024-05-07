@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanCalculator.Domain.Tests", "LoanCalculator.Domain.Tests\LoanCalculator.Domain.Tests.csproj", "{E6D6F626-874B-47A5-9AE5-F5C2461818BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{942D97E3-8870-4E35-A8A4-0FC3B5C7EAB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{942D97E3-8870-4E35-A8A4-0FC3B5C7EAB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{942D97E3-8870-4E35-A8A4-0FC3B5C7EAB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6D6F626-874B-47A5-9AE5-F5C2461818BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D6F626-874B-47A5-9AE5-F5C2461818BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D6F626-874B-47A5-9AE5-F5C2461818BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D6F626-874B-47A5-9AE5-F5C2461818BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{5057BAF0-602A-4D7B-BEA0-DE5CF7ADB2C7} = {74085D5D-EDE7-411D-A1BF-DF0252423334}
 		{E977FC21-7F93-4BCA-873F-D1D44A0FFC78} = {74085D5D-EDE7-411D-A1BF-DF0252423334}
 		{942D97E3-8870-4E35-A8A4-0FC3B5C7EAB8} = {74085D5D-EDE7-411D-A1BF-DF0252423334}
+		{E6D6F626-874B-47A5-9AE5-F5C2461818BC} = {3273B439-8358-40EB-914F-A6F8EBA3B16D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A3FD947-94AA-4641-8C0C-19EAE3EBBAF3}
