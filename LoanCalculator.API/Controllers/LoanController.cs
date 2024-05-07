@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Xml.Serialization;
 using LoanCalculator.Application.DTOs;
+using LoanCalculator.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoanCalculator.API.Controllers;

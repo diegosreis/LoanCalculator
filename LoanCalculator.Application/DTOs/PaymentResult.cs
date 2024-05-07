@@ -6,21 +6,20 @@ namespace LoanCalculator.Application.DTOs;
 public class PaymentPlanResult
 {
     [XmlElement("LoanAmount")] public decimal LoanAmount { get; set; }
+    [XmlElement("PaybackTimeInYears")] public decimal PaybackTimeInYears { get; set; }
 
-    [XmlElement("PaybackTimeInYears")] public int PaybackTimeInYears { get; set; }
-
-    [XmlArray("MonthlyPayments")]
-    [XmlArrayItem("MonthlyPaymentDetail")]
-    public List<MonthlyPaymentDetail> MonthlyPayments { get; set; } = null!;
+    [XmlArray("Payments")]
+    [XmlArrayItem("PaymentsDetail")]
+    public List<PaymentsDetail> Payments { get; set; } = null!;
 
     [XmlElement("TotalPaid")] public decimal TotalPaid { get; set; }
 
     [XmlElement("TotalInterest")] public decimal TotalInterest { get; set; }
 }
 
-public class MonthlyPaymentDetail
+public class PaymentsDetail
 {
-    [XmlElement("Month")] public int Month { get; set; }
+    [XmlElement("PaymentNumber")] public int PaymentNumber { get; set; }
 
     [XmlElement("PrincipalPayment")] public decimal PrincipalPayment { get; set; }
 

@@ -14,17 +14,3 @@ public class PaymentPlan
     public decimal TotalInterest { get; }
 }
 
-public class Payment
-{
-    public Payment(int month, decimal principalAmount, decimal interestAmount)
-    {
-        Month = month;
-        PrincipalAmount = principalAmount;
-        InterestAmount = interestAmount;
-    }
-
-    public int Month { get; }
-    public decimal PrincipalAmount { get; }
-    public decimal InterestAmount { get; }
-    public decimal TotalAmount => Math.Round(PrincipalAmount + InterestAmount, 2);
-}

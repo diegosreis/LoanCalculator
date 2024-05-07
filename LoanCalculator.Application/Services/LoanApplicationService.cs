@@ -1,48 +1,55 @@
 ﻿using LoanCalculator.Application.DTOs;
+using LoanCalculator.Application.Interfaces;
 using LoanCalculator.Domain.Entities;
-using LoanCalculator.Domain.Services;
+using LoanCalculator.Domain.Interfaces;
 
-namespace LoanCalculator.Application.Services;
-
-public class LoanApplicationService : ILoanApplicationService
+namespace LoanCalculator.Application.Services
 {
-    private readonly ILoanCalculator _loanCalculator;
-
-    public LoanApplicationService(ILoanCalculator loanCalculator)
+    public class LoanApplicationService : ILoanApplicationService
     {
-        _loanCalculator = loanCalculator;
-    }
+        
+        private readonly IPaybackSchemeFactory _paybackSchemeFactory;
+        private readonly ILoanFactory _loanFactory;
 
-    public PaymentPlanResult ProcessLoanApplication(LoanRequest loanRequest)
-    {
-        var loan = new Loan(
-            loanRequest.Amount,
-            loanRequest.PaybackTimeInYears,
-            loanRequest.Type
-        );
-
-        var paymentPlan = _loanCalculator.CalculatePaymentPlan(loan);
-
-        var paymentPlanResult = MapToPaymentPlanResult(paymentPlan, loan);
-        return paymentPlanResult;
-    }
-
-    private PaymentPlanResult MapToPaymentPlanResult(PaymentPlan paymentPlan, Loan loan)
-    {
-        var paymentPlanResult = new PaymentPlanResult
+        public LoanApplicationService(IPaybackSchemeFactory paybackSchemeFactory, ILoanFactory loanFactory)
         {
-            LoanAmount = loan.Amount,
-            PaybackTimeInYears = loan.PaybackTimeInYears,
-            MonthlyPayments = paymentPlan.Payments.Select(payment => new MonthlyPaymentDetail
-            {
-                Month = payment.Month,
-                PrincipalPayment = Math.Round(payment.PrincipalAmount, 2),
-                InterestPayment = Math.Round(payment.InterestAmount, 2)
-            }).ToList(),
-            TotalPaid = paymentPlan.TotalPaid,
-            TotalInterest = paymentPlan.TotalInterest
-        };
+            _paybackSchemeFactory = paybackSchemeFactory;
+            _loanFactory = loanFactory;
+        }
 
-        return paymentPlanResult;
+        public PaymentPlanResult ProcessLoanApplication(LoanRequest loanRequest)
+        {
+            
+            var loan = _loanFactory.GetLoan(loanRequest.LoanType);
+
+            
+            var paybackScheme = _paybackSchemeFactory.GetPaybackScheme(loanRequest.PaybackSchemeType);
+
+            var paymentPlan = paybackScheme.GeneratePaymentPlan(loanRequest.Amount,
+                loanRequest.Duration, loan);
+
+            
+            var paymentPlanResult = MapToPaymentPlanResult(paymentPlan, loanRequest);
+            return paymentPlanResult;
+        }
+
+        private PaymentPlanResult MapToPaymentPlanResult(PaymentPlan paymentPlan, LoanRequest loanRequest)
+        {
+            var paymentPlanResult = new PaymentPlanResult
+            {
+                LoanAmount = loanRequest.Amount,
+                PaybackTimeInYears = loanRequest.Duration,
+                Payments = paymentPlan.Payments.Select(payment => new PaymentsDetail
+                {
+                    PaymentNumber = payment.PaymentNumber,
+                    PrincipalPayment = Math.Round(payment.PrincipalAmount, 2),
+                    InterestPayment = Math.Round(payment.InterestAmount, 2)
+                }).ToList(),
+                TotalPaid = paymentPlan.TotalPaid,
+                TotalInterest = paymentPlan.TotalInterest
+            };
+
+            return paymentPlanResult;
+        }
     }
 }

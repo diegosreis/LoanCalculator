@@ -1,4 +1,7 @@
-﻿namespace LoanCalculator.Application.DTOs;
+﻿
+using LoanCalculator.Application.DTOs;
+
+namespace LoanCalculator.Application.Interfaces;
 
 public interface ILoanApplicationService
 {
