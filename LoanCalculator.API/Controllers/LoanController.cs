@@ -29,7 +29,7 @@ public class LoanController : ControllerBase
         return Ok(paymentPlanResult);
     }
 
-    [HttpGet("CalculateLoanXml")]
+    [HttpGet("calculate-loan-xml")]
     public ActionResult CalculateLoanXml([FromQuery] LoanRequest loanRequest)
     {
         if (!ModelState.IsValid)

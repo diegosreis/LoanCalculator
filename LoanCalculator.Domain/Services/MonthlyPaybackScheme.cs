@@ -12,9 +12,9 @@ namespace LoanCalculator.Domain.Services
 
             var paybackTimeInMonths = duration * 12;
 
-            var interstRate = loan.GetInterest();
+            var interestRate = loan.GetInterest();
 
-            var monthlyInterestRate = interstRate / 12;
+            var monthlyInterestRate = interestRate / 12;
             var monthlyPrincipalPayment = loanAmount / paybackTimeInMonths;
             var totalInterestPaid = 0m;
             var totalPaid = 0m;

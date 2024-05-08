@@ -26,7 +26,7 @@ Clone the repository to your local machine:
 ```bash
 git clone https://github.com/diegosreis/LoanCalculator
 cd LoanCalculator
-cd loancalculator.web
-npm run build
-cd ..
 docker-compose up -d
+```
+
+Web -> http://localhost:3000/

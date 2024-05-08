@@ -10,8 +10,8 @@ namespace LoanCalculator.Tests.Domain.Services
         public void GeneratePaymentPlan_ReturnsExpectedPaymentPlan()
         {
             // Arrange
-            var loanAmount = 1000m;
-            var duration = 1; // in years
+            var loanAmount = 10000m;
+            var duration = 2; // in years
             var loan = new HouseLoan();
             
 
@@ -23,7 +23,8 @@ namespace LoanCalculator.Tests.Domain.Services
             // Assert
             Assert.NotNull(paymentPlan);
             Assert.IsType<PaymentPlan>(paymentPlan);
-            Assert.Equal(12, paymentPlan.Payments.Count); // Should be 12 payments for 1 year
+            Assert.Equal(24, paymentPlan.Payments.Count); // Should be 24 payments for 2 year
+            Assert.Equal(Math.Round(10700m, 2), Math.Round(paymentPlan.TotalPaid,2));
 
         }
     }

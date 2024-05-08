@@ -1,4 +1,4 @@
-FROM node:14 AS build
+FROM node:22 AS build
 WORKDIR /app
 COPY loancalculator.web/package.json ./
 COPY loancalculator.web/package-lock.json ./

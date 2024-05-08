@@ -1,7 +1,18 @@
 import React, { useState, FormEvent } from 'react';
 import '../App.css';
-type LoanType = 'House' | 'Car' | 'Personal';
-type PaybackSchemeType = 'Monthly' | 'BiWeekly' | 'Yearly';
+
+enum LoanType {
+    House = 'House',
+    Car = 'Car',
+    Personal = 'Personal'
+}
+
+enum PaybackSchemeType {
+    Monthly = 'Monthly',
+    BiWeekly = 'BiWeekly',
+    Yearly = 'Yearly'
+}
+
 
 type Payment = {
     paymentNumber: number;
@@ -21,8 +32,8 @@ type LoanCalculationResult = {
 const LoanForm: React.FC = () => {
     const [desiredAmount, setDesiredAmount] = useState<string>('');
     const [duration, setDuration] = useState<string>('');
-    const [loanType, setLoanType] = useState<LoanType>('House');
-    const [paybackSchemeType, setPaybackSchemeType] = useState<PaybackSchemeType>('Monthly');
+    const [loanType, setLoanType] = useState<LoanType>(LoanType.House);
+    const [paybackSchemeType, setPaybackSchemeType] = useState<PaybackSchemeType>(PaybackSchemeType.Monthly);
     const [loanResult, setLoanResult] = useState<LoanCalculationResult | null>(null);
    
 
@@ -48,8 +59,8 @@ const LoanForm: React.FC = () => {
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
-        if (loanType !== 'House') {
-            alert('This loan type has not been implemented yet.');
+        if (loanType !== LoanType.House) {
+            alert(`This loan type (${loanType}) has not been implemented yet.`);
             return;
         }
 
@@ -70,7 +81,12 @@ const LoanForm: React.FC = () => {
                         type="number"
                         id="desiredAmount"
                         value={desiredAmount}
-                        onChange={(e) => setDesiredAmount(e.target.value)}
+                        onChange={(e) => {
+                            const value = parseInt(e.target.value);
+                            if (value >= 0) {
+                                setDesiredAmount(value.toString());
+                            }
+                        }}
                         step="1000"
                     />
                 </div>
@@ -81,9 +97,9 @@ const LoanForm: React.FC = () => {
                         value={loanType}
                         onChange={(e) => setLoanType(e.target.value as LoanType)}
                     >
-                        <option value="house">House</option>
-                        <option value="car">Car</option>
-                        <option value="personal">Personal</option>
+                        <option value="House">House</option>
+                        <option value="Car">Car</option>
+                        <option value="Personal">Personal</option>
                     </select>
                 </div>
                 <div className="loan-form-group">
@@ -104,7 +120,12 @@ const LoanForm: React.FC = () => {
                         type="number"
                         id="paybackTimeInYears"
                         value={duration}
-                        onChange={(e) => setDuration(e.target.value)}
+                        onChange={(e) => {
+                            const value = parseInt(e.target.value);
+                            if (value >= 0) {
+                                setDuration(value.toString());
+                            }
+                        }}
                     />
                 </div>
                 <div className="loan-form-group">
