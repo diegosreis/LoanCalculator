@@ -64,6 +64,13 @@ const LoanForm: React.FC = () => {
             return;
         }
 
+        if (paybackSchemeType !== PaybackSchemeType.Monthly) {
+
+            alert(`This payback scheme (${paybackSchemeType}) has not been implemented yet.`);
+            return;
+
+            }
+
         try {
             const result = await fetchLoanCalculation(desiredAmount, duration, loanType, paybackSchemeType);
             setLoanResult(result);
